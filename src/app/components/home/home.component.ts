@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
     <article class="article-info">
       <title>{{ welcomeText | uppercase }}</title>
       <h1 for="">{{ welcomeText | uppercase }}</h1>
-      <a (onClick)="logOut()">LogOut</a>
+      <a (click)="logOut()" (keydown.escape)="logOut()" tabindex="0">LogOut</a>
       <section class="user-card">
         <app-user-card [user]="user"></app-user-card>
       </section>

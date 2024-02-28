@@ -16,7 +16,9 @@ import { Location } from '@angular/common';
         <h4>Password: {{ user.password }}</h4>
       </section>
       <section class="buttons">
-        <a (onClick)="goBack()">Voltar</a>
+        <a (click)="goBack()" (keydown.escape)="goBack()" tabindex="0"
+          >Voltar</a
+        >
       </section>
     </div>
   </div>`,
