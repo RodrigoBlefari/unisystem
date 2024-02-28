@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { UserStateService } from '../../services/user-state.service';
 import { User } from '../../interfaces/user.interface';
@@ -23,32 +23,40 @@ import { Subscription } from 'rxjs';
   </section>`,
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnDestroy {
-  user!: User;
+export class HomeComponent implements OnInit, OnDestroy {
+  user: User | null = null;
   welcomeText: string = 'Bem vindo';
-  private userSubscription: Subscription | null = null;
+  userSubscription: Subscription = new Subscription();
+  loggingOut: boolean = false;
 
   constructor(
-    private userStateService: UserStateService,
-    private route: Router
-  ) {
-    this.userStateService.getUser().subscribe((user) => {
-      if (!user) {
-        this.route.navigate(['/']);
-      } else {
-        this.user = user;
-      }
-    });
+    public userStateService: UserStateService,
+    public router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.userSubscription = this.userStateService
+      .getUser()
+      .subscribe((user) => {
+        if (user) {
+          this.user = user;
+        } else if (!this.loggingOut) {
+          this.logOut();
+        }
+      });
   }
 
   ngOnDestroy(): void {
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
-    }
+    this.userSubscription.unsubscribe();
   }
 
   logOut(): void {
-    this.userStateService.clearUser();
-    this.route.navigate(['/']);
+    if (this.user) {
+      // Verifica se o usuário está logado antes de fazer logout
+      this.loggingOut = true; // Marca que o logout está ocorrendo
+      this.userStateService.clearUser();
+      this.user = null; // Define o usuário como null após fazer logout
+      this.router.navigate(['/']);
+    }
   }
 }

@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
   template: `
     <div class="user-card">
       <div class="avatar">
-        <img [src]="user.avatar" alt="User Avatar" />
+        <img [src]="user?.avatar" alt="User Avatar" />
       </div>
       <div class="user-info">
-        <h3>{{ user.name }}</h3>
+        <h3>{{ user?.name }}</h3>
         <a (click)="onMyProfile()" (keydown.enter)="onMyProfile()" tabindex="0"
           >Ver Perfil</a
         >
@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
   styleUrl: './user-card.component.scss',
 })
 export class UserCardComponent {
-  @Input() user!: User;
+  @Input() user!: User | null;
 
   constructor(private router: Router) {}
 
