@@ -35,12 +35,6 @@ export class HomeComponent implements OnDestroy {
     this.userStateService.getUser().subscribe((user) => {
       if (!user) {
         this.route.navigate(['/']);
-        this.user = {
-          id: 'dsadsadsadsa',
-          name: 'Rodrigo',
-          password: 'secret',
-          avatar: 'assets/default-user.png',
-        };
       } else {
         this.user = user;
       }
