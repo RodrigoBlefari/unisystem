@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../interfaces/user.interface';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -17,7 +16,7 @@ import { Location } from '@angular/common';
         <h4>Password: {{ user.password }}</h4>
       </section>
       <section class="buttons">
-        <a (click)="goBack()">Voltar</a>
+        <a (onClick)="goBack()">Voltar</a>
       </section>
     </div>
   </div>`,
@@ -25,9 +24,7 @@ import { Location } from '@angular/common';
 })
 export class UserInfoCardComponent {
   @Input() user!: User;
-  constructor(private location: Location) {
-    console.log('detais', this.user);
-  }
+  constructor(private location: Location) {}
 
   goBack(): void {
     this.location.back();

@@ -1,12 +1,6 @@
-// src/app/components/formulario/formulario.component.scss
-
-// Importe os estilos globais de forma relativa
 @import "../../../styles.scss";
-
-/* Adicione estilos específicos do componente */
 :host {
     width: 100%;
-    padding: 20px;
     max-width: 600px;
     min-width: 200px;
     background: var(--secondary-color);
@@ -21,6 +15,9 @@
         flex-direction: column;
         height: auto;
         border-radius: 8px;
+        label {
+            text-align: left;
+        }
 
         .section-buttons {
             margin-top: 20px;

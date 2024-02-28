@@ -6,9 +6,17 @@ import { CommonModule } from '@angular/common';
   selector: 'app-tela-login',
   standalone: true,
   imports: [FormularioComponent, CommonModule],
-  template: ` <section class="form">
-    <app-formulario></app-formulario>
-  </section>`,
+  template: `
+    <section class="section-main">
+      <article class="article-info">
+        <title>{{ welcomeText | uppercase }}</title>
+        <h1 for="">{{ welcomeText | uppercase }}</h1>
+        <section class="form">
+          <app-formulario></app-formulario>
+        </section>
+      </article>
+    </section>
+  `,
   styleUrl: './tela-login.component.scss',
 })
 export class TelaLoginComponent {

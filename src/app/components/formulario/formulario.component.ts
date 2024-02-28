@@ -5,7 +5,6 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
-  AbstractControl,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { User } from '../../interfaces/user.interface';
@@ -16,8 +15,6 @@ import { UserStateService } from '../../services/user-state.service';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   template: `
-    <title>Cadastro</title>
-    <h1 for="">Cadastro</h1>
     <form
       class="form-register"
       [formGroup]="formulario"
@@ -122,7 +119,6 @@ export class FormularioComponent {
       };
       if (!user.avatar) user.avatar = 'assets/default-user.png';
       this.userStateService.setUser(user);
-      console.log('User submitted:', user);
       this.router.navigate(['home']);
     } else {
       this.formulario.markAllAsTouched();

@@ -1,7 +1,24 @@
-.form {
+@import "../../../styles.scss";
+.section-main {
     display: grid;
     place-items: center;
     height: 100vh;
-    padding: 16px;
-    border-radius: 8px;
+
+    .article-info {
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+        max-width: 600px;
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        background: var(--secondary-color);
+        height: auto;
+        border-radius: 8px;
+        position: relative;
+
+        h1 {
+            margin-bottom: 16px;
+        }
+    }
 }

@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
       </div>
       <div class="user-info">
         <h3>{{ user.name }}</h3>
-        <a (click)="onMmyProfile()">Ver Perfil</a>
+        <a (onClick)="onMmyProfile()">Ver Perfil</a>
       </div>
     </div>
   `,
@@ -26,7 +26,6 @@ export class UserCardComponent {
   constructor(private router: Router) {}
 
   onMmyProfile() {
-    console.log(`user/${this.user?.id}`);
     this.router.navigate([`user/${this.user?.id}`]);
   }
 }

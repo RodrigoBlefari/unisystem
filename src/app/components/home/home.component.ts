@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { UserStateService } from '../../services/user-state.service';
 import { User } from '../../interfaces/user.interface';
@@ -14,8 +14,8 @@ import { Subscription } from 'rxjs';
   template: ` <section class="section-main">
     <article class="article-info">
       <title>{{ welcomeText | uppercase }}</title>
-      <h1 for="">Bem vindo</h1>
-      <a (click)="logOut()">LogOut</a>
+      <h1 for="">{{ welcomeText | uppercase }}</h1>
+      <a (onClick)="logOut()">LogOut</a>
       <section class="user-card">
         <app-user-card [user]="user"></app-user-card>
       </section>
@@ -23,7 +23,7 @@ import { Subscription } from 'rxjs';
   </section>`,
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
   user!: User;
   welcomeText: string = 'Bem vindo';
   private userSubscription: Subscription | null = null;
@@ -43,20 +43,17 @@ export class HomeComponent {
         };
       } else {
         this.user = user;
-        console.log(this.user);
       }
     });
   }
 
   ngOnDestroy(): void {
-    // Cancela a inscrição para evitar vazamentos de memória
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
   }
 
   logOut(): void {
-    // Limpa o estado do usuário e navega para a página de login
     this.userStateService.clearUser();
     this.route.navigate(['/']);
   }
