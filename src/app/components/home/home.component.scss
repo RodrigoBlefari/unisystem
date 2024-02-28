@@ -1,0 +1,29 @@
+.section-main {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+
+    .article-info {
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+        max-width: 600px;
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        background: var(--secondary-color);
+        height: auto;
+        border-radius: 8px;
+        position: relative;
+
+        a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+        .section-user-card {
+            padding: 16px;
+        }
+    }
+}

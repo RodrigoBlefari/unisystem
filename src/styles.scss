@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+// src/styles.scss
+
+// Definindo variáveis de cores
+:root {
+    --primary-color: #605dc8; // Cor primária
+    --secondary-color: #8b89e6; // Cor secundária
+    --accent-color: #e8e7fa; // Cor de destaque/acento
+    --shadow-color: #00000057; // Cor da sombra
+    --background-opacyty-card: #0f0f0f3b;
+    --background-gradient: linear-gradient(
+        0deg,
+        rgba(96, 93, 200, 1) 0%,
+        rgba(232, 231, 250, 1) 50%,
+        rgba(139, 137, 230, 1) 100%
+    ); // Gradiente de fundo
+
+    --text-success: #70c260; // Cor da sombra
+    --text-warning: ##ffc1c1; // Cor da sombra
+}
+
+// Estilos globais
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; // Adiciona box-sizing para garantir que padding e border não aumentem a largura dos elementos
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--background-gradient);
+    color: var(--accent-color); // Altera a cor do texto para a cor de destaque
+}
+
+// Estilos para inputs
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 10px;
+    width: 100%; // Preenche toda a largura disponível
+    box-sizing: border-box;
+}
+
+// Estilos para botões
+button {
+    padding: 10px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition:
+        background-color 0.3s,
+        border-color 0.3s; // Adiciona uma transição suave
+}
+
+button:active {
+    background-color: var(--secondary-color);
+}
+
+// Estilos para labels
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.error-message {
+    color: var(--text-warning);
+    font-size: 0.8rem;
+    text-align: right;
+    padding: 2px;
+}

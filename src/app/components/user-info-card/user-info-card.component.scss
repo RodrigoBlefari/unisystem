@@ -1,0 +1,30 @@
+@import "../../../styles.scss";
+
+.user-card {
+    align-items: center;
+    background-color: var(--background-opacyty-card);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 16px;
+    color: var(--accent-color);
+
+    .avatar img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .user-info {
+        h3 {
+            margin: 16px;
+        }
+        .buttons {
+            text-align: left;
+            a {
+                color: var(--accent-color);
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+}
