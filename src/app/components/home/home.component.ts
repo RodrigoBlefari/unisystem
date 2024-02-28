@@ -52,10 +52,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   logOut(): void {
     if (this.user) {
-      // Verifica se o usuário está logado antes de fazer logout
-      this.loggingOut = true; // Marca que o logout está ocorrendo
+      this.loggingOut = true;
       this.userStateService.clearUser();
-      this.user = null; // Define o usuário como null após fazer logout
+      this.user = null;
       this.router.navigate(['/']);
     }
   }

@@ -26,7 +26,7 @@ import { Location } from '@angular/common';
 })
 export class UserInfoCardComponent {
   @Input() user!: User;
-  constructor(private location: Location) {}
+  constructor(public location: Location) {}
 
   goBack(): void {
     this.location.back();
